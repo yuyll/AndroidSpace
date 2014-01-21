@@ -1,0 +1,48 @@
+package com.example.asynchttp;
+
+import java.net.URLEncoder;
+
+import org.apache.http.Header;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.view.View;
+import android.widget.Toast;
+
+public class MainActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+	}
+	
+	public void click(View view){
+		AsyncHttpClient client = new AsyncHttpClient();
+		String path="http://10.20.120.75:8080/web/LoginService?username="+URLEncoder.encode("yudan")+"&password="+URLEncoder.encode("1234");
+		
+		client.get(path,new AsyncHttpResponseHandler() {
+
+			@Override
+			public void onSuccess(int statusCode, Header[] headers,
+					byte[] responseBody) {
+				// TODO Auto-generated method stub
+				Toast.makeText(MainActivity.this, "请求成功:", 1).show();
+			}
+
+			@Override
+			public void onFailure(int statusCode, Header[] headers,
+					byte[] responseBody, Throwable error) {
+				Toast.makeText(MainActivity.this, "请求成功:"+new String(responseBody), 1).show();
+				
+			}
+			
+		});
+        
+	}
+
+}

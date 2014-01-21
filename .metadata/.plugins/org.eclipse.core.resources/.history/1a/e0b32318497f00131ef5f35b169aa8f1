@@ -1,0 +1,89 @@
+package com.example.byget.loginService;
+
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+
+import javax.net.ssl.HttpsURLConnection;
+
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.conn.ClientConnectionManager;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.DefaultClientConnection;
+
+import com.loopj.android.http.AsyncHttpClient;
+
+public class LoginServiceUtils {
+	public static String loginService(String username,String password){
+		try {
+			String path="http://10.20.120.75:8080/web/LoginService?username="+username+"&password="+password;
+			URL url=new URL(path);
+			HttpURLConnection conn=(HttpURLConnection) url.openConnection();	
+			conn.setConnectTimeout(5000);
+			conn.setRequestMethod("GET");
+			int code=conn.getResponseCode();
+			InputStream is=conn.getInputStream();
+			ByteArrayOutputStream bos=new ByteArrayOutputStream();
+			int len = 0;
+			byte []b=new byte[1024];
+			while ((len = is.read(b)) != -1){
+				bos.write(b, 0, len);
+			}
+			is.close();
+			bos.close();
+			byte []newString=bos.toByteArray();
+			return new String(newString);
+
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	public static String loginService2(String username,String password){
+		try {
+			String path="http://10.20.120.75:8080/web/LoginService";		
+			URL url=new URL(path);
+			HttpURLConnection conn=(HttpURLConnection) url.openConnection();			
+			conn.setConnectTimeout(5000);
+			conn.setRequestMethod("POST");
+			String data="username="+username+"&password="+password;
+			conn.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
+			conn.setRequestProperty("Content-Length",data.length()+"");
+			conn.setDoOutput(true);
+//			int code=conn.getResponseCode();			
+			OutputStream os=conn.getOutputStream();
+			os.write(data.getBytes());
+			InputStream is=conn.getInputStream();
+			ByteArrayOutputStream bos=new ByteArrayOutputStream();
+			int len=0;
+			byte []buffer=new byte[1024];
+			while((len=is.read(buffer))!=-1){
+				bos.write(buffer, 0, len);
+			}
+			is.read();
+			bos.close();
+			String result=new String(bos.toByteArray());
+			return result;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	public static String loginService3(String username,String password){
+		HttpClient client=new DefaultHttpClient();
+		String path="http://10.20.120.75:8080/web/LoginService?username="+URLEncoder.encode(username)+"&password="+URLEncoder.encode(password);
+		HttpGet httpget=new HttpGet(path);
+		
+		
+		
+	}
+
+	
+}

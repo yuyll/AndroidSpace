@@ -1,0 +1,79 @@
+package com.example.byget;
+
+import java.net.URL;
+
+import com.example.byget.loginService.LoginServiceUtils;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class MainActivity extends Activity {
+	private EditText etu;
+	private EditText etp;
+	String username;
+	String password;
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		etu=(EditText) findViewById(R.id.et_username);
+		etp=(EditText) findViewById(R.id.et_password);
+
+	}
+	public void click(View view){
+		
+		new Thread(){
+			public void run() {
+				username=etu.getText().toString().trim();
+				password=etp.getText().toString().trim();
+				final String result=LoginServiceUtils.loginService2(username, password);
+				if(result!=null){
+					runOnUiThread(new Runnable() {
+						public void run() {
+							Toast.makeText(MainActivity.this, result, 1).show();
+							
+						}
+					});
+				}else{
+					runOnUiThread(new Runnable() {
+						public void run() {
+							Toast.makeText(MainActivity.this, "login err...", 1).show();
+							
+						}
+					});
+				}
+			};
+		}.start();
+	}
+	
+	public void click2(View view){
+		
+		new Thread(){
+			public void run() {
+				username=etu.getText().toString().trim();
+				password=etp.getText().toString().trim();
+				final String result=LoginServiceUtils.loginService2(username, password);
+				if(result!=null){
+					runOnUiThread(new Runnable() {
+						public void run() {
+							Toast.makeText(MainActivity.this, result, 1).show();
+							
+						}
+					});
+				}else{
+					runOnUiThread(new Runnable() {
+						public void run() {
+							Toast.makeText(MainActivity.this, "login err...", 1).show();
+							
+						}
+					});
+				}
+			};
+		}.start();
+	}
+
+
+}

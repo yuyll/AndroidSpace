@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;LoggingDate&apos; to &apos;LoggingInfo&apos;&#x0D;&#x0A;- Original project: &apos;JavaDemo&apos;&#x0D;&#x0A;- Original element: &apos;LoggingDate&apos;&#x0D;&#x0A;- Renamed element: &apos;LoggingInfo&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;LoggingDate&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{LoggingDate.java[LoggingDate" matchStrategy="1" name="LoggingInfo" qualified="false" references="true" similarDeclarations="false" stamp="1386733374119" textual="false" version="1.0"/>
+</session>

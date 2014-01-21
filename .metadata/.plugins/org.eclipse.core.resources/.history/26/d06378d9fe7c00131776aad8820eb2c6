@@ -1,0 +1,9 @@
+package com.example.htmlViewer.utils;
+
+import java.io.InputStream;
+
+public class FileUtils {
+   public static String fileOutput(InputStream is){
+	   
+   }
+}

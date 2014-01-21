@@ -1,0 +1,4 @@
+1386901003975	Extracts string '输入电话号码' into R.string.input_phone_num
+1386901242637	Extracts string '输入内容' into R.string.sms_content
+1386901420757	Extracts string '输入内容：' into R.string.input_content
+1386901753536	Extracts string 'send' into R.string.sms_send

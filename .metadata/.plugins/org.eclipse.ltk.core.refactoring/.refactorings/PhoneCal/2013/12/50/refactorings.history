@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extracts string &apos;拨打电话&apos; into R.string.dail" description="Extracts string &apos;拨打电话&apos; into R.string.dail" file="/PhoneCal/res/layout/activity_main.xml" flags="6" id="com.android.ide.eclipse.adt.refactoring.extract.string" mode="EDIT_SOURCE" proj="/PhoneCal" rplc-all-java="false" rplc-all-xml="false" sel-end="964" sel-start="946" stamp="1386831183776" tok-esc="拨打电话" xml-attr-name="android:text"/>
+</session>

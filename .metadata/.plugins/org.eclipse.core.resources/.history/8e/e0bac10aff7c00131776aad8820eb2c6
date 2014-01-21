@@ -1,0 +1,11 @@
+package com.example.htmlViewer.utils;
+
+import java.io.InputStream;
+
+public class FileUtils {
+   public static String fileOutput(InputStream is){
+	   int len=0;
+	   byte []b=new byte(1024);
+	   len=is.read(buffer)
+   }
+}
